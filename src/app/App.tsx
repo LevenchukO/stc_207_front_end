@@ -14,7 +14,6 @@ const App = () => {
       <Navbar />
 
       <AppRouter />
-      <button onClick={toggleTheme}>TOGGLE</button>
     </div>
   );
 };
