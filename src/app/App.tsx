@@ -10,7 +10,7 @@ import { Suspense } from "react";
 
 
 const App = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, _ } = useTheme();
 
   return (
     <div className={classNames("app", {}, [theme])}>
