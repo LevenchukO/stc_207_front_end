@@ -4,18 +4,11 @@
  */
 
 import type {Config} from 'jest';
+import path from 'path';
+import jestEmptyComponent from './jestEmptyComponent';
 
 const config: Config = {
-  // All imported modules in your tests should be mocked automatically
-  // automock: false,
-
-  // Stop running tests after `n` failures
-  // bail: 0,
-
-  // The directory where Jest should store its cached dependency information
-  // cacheDirectory: "/private/var/folders/6_/fvd1v4xx1k94b9203w309xlc0000gn/T/jest_dx",
-
-  // Automatically clear mock calls, instances, contexts and results before every test
+  
   clearMocks: true,
 
   // The test environment that will be used for testing
@@ -28,8 +21,15 @@ const config: Config = {
 
   // An array of directory names to be searched recursively up from the requiring module's location
   moduleDirectories: [
-    "node_modules"
+    "node_modules", "src"
   ],
+
+  moduleNameMapper: {
+    // '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+    //   '<rootDir>/__mocks__/fileMock.js',
+    '\\.(css|less|scss)$': 'identity-obj-proxy',
+    '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+  },
 
   // An array of file extensions your modules use
   moduleFileExtensions: [
@@ -45,6 +45,8 @@ const config: Config = {
 
   // The root directory that Jest should scan for tests and modules within
   rootDir: '../../',
+
+  setupFilesAfterEnv: ['<rootDir>/config/jest/jest-setup.ts'],
 
   // The glob patterns Jest uses to detect test files
   testMatch: [

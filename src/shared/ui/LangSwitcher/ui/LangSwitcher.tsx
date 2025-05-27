@@ -20,7 +20,7 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
       className={classNames(cls.langswitcher, {}, [className])}
       onClick={toggleLang}
     >
-      {i18n.language.toUpperCase()}
+      {i18n.language?.toUpperCase()}
     </Button>
   );
 };
